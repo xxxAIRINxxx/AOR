@@ -8,37 +8,37 @@ import AOR
 
 /// ForegroundColor
 
-AOR("ForegroundColor", .ForegroundColor(UIColor.blueColor())).put()
+AOR("ForegroundColor", .foregroundColor(UIColor.blue)).put()
 
 /// BackgroundColor
 
-AOR("BackgroundColor", .BackgroundColor(UIColor.blueColor())).put()
+AOR("BackgroundColor", .backgroundColor(UIColor.blue)).put()
 
 /// Line
 
-AOR("StrikethroughStyle PatternDashDotDot", .Line(LineInfo(.Strikethrough, UIColor.whiteColor(), .Single, .DashDotDot, false))).put()
+AOR("StrikethroughStyle PatternDashDotDot", .line(LineInfo(.strikethrough, UIColor.white, .single, .dashDotDot, false))).put()
 
 /// Outline
 
-AOR("Outline", .Outline(OutlineInfo(UIColor.whiteColor(), 1.0))).put()
+AOR("Outline", .outline(OutlineInfo(UIColor.white, 1.0))).put()
 
 /// Multiple Attributes
 
 AOR("Multiple Attributes", [
-    .ForegroundColor(UIColor.blueColor()),
-    .Line(LineInfo(.Strikethrough, UIColor.blackColor(), .Single, .Dash, false)),
+    .moregroundColor(UIColor.blue),
+    .line(LineInfo(.strikethrough, UIColor.black, .single, .dash, false)),
     ]).put()
 
 /// Adding Attributes
 
-AOR("ForegroundColor", .ForegroundColor(UIColor.blueColor()))
-    .append("BackgroundColor", .BackgroundColor(UIColor.blueColor()))
+AOR("ForegroundColor", .foregroundColor(UIColor.blue))
+    .append("BackgroundColor", .backgroundColor(UIColor.blue))
     .put()
 
 /// Adding Attributes (Custom Operator)
 
-let a = AOR("ForegroundColor", .ForegroundColor(UIColor.blueColor()))
-        +| AOR("BackgroundColor", .BackgroundColor(UIColor.blueColor()))
+let a = AOR("ForegroundColor", .foregroundColor(UIColor.blue))
+        +| AOR("BackgroundColor", .backgroundColor(UIColor.blue))
 a.put()
 
 /// Paragraph
@@ -47,6 +47,6 @@ let p = ParagraphInfo()
     .lineSpacing(10.0)
     .minimumLineHeight(15.0)
     .firstLineHeadIndent(30.0)
-let d = AOR("Paragraph\nStyle\nAttribute", .ParagraphStyle(p)).put()
+let d = AOR("Paragraph\nStyle\nAttribute", .paragraphStyle(p)).put()
 
 //　Following, please look at the demo project
