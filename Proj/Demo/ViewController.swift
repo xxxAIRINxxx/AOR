@@ -20,52 +20,52 @@ final class ViewController: UIViewController {
         
         let a = AOR("AOR Example")
             .append("\n\n")
-            .append("ForegroundColor", .ForegroundColor(UIColor.blueColor()))
+            .append("ForegroundColor", .foregroundColor(UIColor.blue))
             .append("\n\n")
-            .append("BackgroundColor", .BackgroundColor(UIColor.blueColor()))
+            .append("BackgroundColor", .backgroundColor(UIColor.blue))
             .append("\n\n")
-            .append("Font (Cochin-BoldItalic)", .Font(UIFont(name: "Cochin-BoldItalic", size: 30)!))
+            .append("Font (Cochin-BoldItalic)", .font(UIFont(name: "Cochin-BoldItalic", size: 30)!))
             .append("\n\n")
-            .append("StrikethroughStyle StyleSingle\n", .Line(LineInfo(.Strikethrough, nil, .Single, .Solid, false)))
-            .append("StrikethroughStyle StyleThick\n", .Line(LineInfo(.Strikethrough, nil, .Thick, .Solid, false)))
-            .append("StrikethroughStyle StyleDouble\n", .Line(LineInfo(.Strikethrough, nil, .Double, .Solid, false)))
-            .append("StrikethroughStyle PatternSolid\n", .Line(LineInfo(.Strikethrough, nil, .Single, .Solid, false)))
-            .append("StrikethroughStyle PatternDot\n", .Line(LineInfo(.Strikethrough, nil, .Single, .Dot, false)))
-            .append("StrikethroughStyle PatternDash\n", .Line(LineInfo(.Strikethrough, nil, .Single, .Dash, false)))
-            .append("StrikethroughStyle PatternDashDot\n", .Line(LineInfo(.Strikethrough, nil, .Single, .DashDot, false)))
-            .append("StrikethroughStyle PatternDashDotDot\n", .Line(LineInfo(.Strikethrough, nil, .Single, .DashDotDot, false)))
-            .append("StrikethroughStyle ByWord", .Line(LineInfo(.Strikethrough, nil, .Single, .Solid, true)))
+            .append("StrikethroughStyle StyleSingle\n", .line(LineInfo(.strikethrough, nil, .single, .solid, false)))
+            .append("StrikethroughStyle StyleThick\n", .line(LineInfo(.strikethrough, nil, .thick, .solid, false)))
+            .append("StrikethroughStyle StyleDouble\n", .line(LineInfo(.strikethrough, nil, .double, .solid, false)))
+            .append("StrikethroughStyle PatternSolid\n", .line(LineInfo(.strikethrough, nil, .single, .solid, false)))
+            .append("StrikethroughStyle PatternDot\n", .line(LineInfo(.strikethrough, nil, .single, .dot, false)))
+            .append("StrikethroughStyle PatternDash\n", .line(LineInfo(.strikethrough, nil, .single, .dash, false)))
+            .append("StrikethroughStyle PatternDashDot\n", .line(LineInfo(.strikethrough, nil, .single, .dashDot, false)))
+            .append("StrikethroughStyle PatternDashDotDot\n", .line(LineInfo(.strikethrough, nil, .single, .dashDotDot, false)))
+            .append("StrikethroughStyle ByWord", .line(LineInfo(.strikethrough, nil, .single, .solid, true)))
             .append("\n\n")
-            .append("UnderlineStyle StyleSingle\n", .Line(LineInfo(.Underline, nil, .Single, .Solid, false)))
-            .append("UnderlineStyle StyleThick\n", .Line(LineInfo(.Underline, nil, .Thick, .Solid, false)))
-            .append("UnderlineStyle StyleDouble\n", .Line(LineInfo(.Underline, nil, .Double, .Solid, false)))
-            .append("UnderlineStyle PatternSolid\n", .Line(LineInfo(.Underline, nil, .Single, .Solid, false)))
-            .append("UnderlineStyle PatternDot\n", .Line(LineInfo(.Underline, nil, .Single, .Dot, false)))
-            .append("UnderlineStyle PatternDash\n", .Line(LineInfo(.Underline, nil, .Single, .Dash, false)))
-            .append("UnderlineStyle PatternDashDot\n", .Line(LineInfo(.Underline, nil, .Single, .DashDot, false)))
-            .append("UnderlineStyle PatternDashDotDot\n", .Line(LineInfo(.Underline, nil, .Single, .DashDotDot, false)))
-            .append("UnderlineStyle ByWord", .Line(LineInfo(.Underline, nil, .Single, .Solid, true)))
+            .append("UnderlineStyle StyleSingle\n", .line(LineInfo(.underline, nil, .single, .solid, false)))
+            .append("UnderlineStyle StyleThick\n", .line(LineInfo(.underline, nil, .thick, .solid, false)))
+            .append("UnderlineStyle StyleDouble\n", .line(LineInfo(.underline, nil, .double, .solid, false)))
+            .append("UnderlineStyle PatternSolid\n", .line(LineInfo(.underline, nil, .single, .solid, false)))
+            .append("UnderlineStyle PatternDot\n", .line(LineInfo(.underline, nil, .single, .dot, false)))
+            .append("UnderlineStyle PatternDash\n", .line(LineInfo(.underline, nil, .single, .dash, false)))
+            .append("UnderlineStyle PatternDashDot\n", .line(LineInfo(.underline, nil, .single, .dashDot, false)))
+            .append("UnderlineStyle PatternDashDotDot\n", .line(LineInfo(.underline, nil, .single, .dashDotDot, false)))
+            .append("UnderlineStyle ByWord", .line(LineInfo(.underline, nil, .single, .solid, true)))
             .append("\n\n")
-            .append("Outline", .Outline(OutlineInfo(UIColor.blueColor(), 1.0)))
+            .append("Outline", .outline(OutlineInfo(UIColor.blue, 1.0)))
             .append("\n\n")
         
         // Multiple
         
         let b = AOR("Multiple Attributes", [
-                .ForegroundColor(UIColor.blueColor()),
-                .Line(LineInfo(.Strikethrough, UIColor.blackColor(), .Single, .Dash, false)),
+                .foregroundColor(UIColor.blue),
+                .line(LineInfo(.strikethrough, UIColor.black, .single, .dash, false)),
             ])
         
         // Custom Operator
         
         let c = AOR("\n\n")
-            +| AOR("Shadow", .Shadow(ShadowInfo(CGSize.zero, UIColor.redColor(), 5.0)))
+            +| AOR("Shadow", .shadow(ShadowInfo(CGSize.zero, UIColor.red, 5.0)))
             +| AOR("\n\n")
-            +| AOR("TextEffect", .TextEffect(.LetterpressStyle))
+            +| AOR("TextEffect", .textEffect(.letterpressStyle))
             +| AOR("\n\n")
-            +| AOR("ForegroundColor", .ForegroundColor(UIColor.blueColor()))
+            +| AOR("ForegroundColor", .foregroundColor(UIColor.blue))
             +| AOR("\n\n")
-            +| AOR("Twitter", .Link("https://twitter.com/search-home"))
+            +| AOR("Twitter", .link("https://twitter.com/search-home"))
             +| AOR("\n\n")
         
         // Paragraph
@@ -74,7 +74,7 @@ final class ViewController: UIViewController {
             .lineSpacing(10.0)
             .minimumLineHeight(15.0)
             .firstLineHeadIndent(30.0)
-        let d = AOR("Paragraph\nStyle\nAttribute", .ParagraphStyle(p))
+        let d = AOR("Paragraph\nStyle\nAttribute", .paragraphStyle(p))
         
         self.textView.attributedText = (a +| b +| c +| d).put()
         
