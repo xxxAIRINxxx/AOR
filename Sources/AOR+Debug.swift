@@ -10,7 +10,7 @@ import Foundation
 
 extension AOR {
     
-    public func aor_textKitDebugPrint(size: CGSize) {
+    public func aor_textKitDebugPrint(_ size: CGSize) {
         print("AOR TextKit Debug Print -------------------------------------")
         print("usedSize : \(self.usedSize(size))")
         print("maxLineCount : \(self.maxLineCount(size.width))")
@@ -29,13 +29,13 @@ extension NSLayoutManager {
         print("AOR NSLayoutManager Debug Print -------------------------------------")
         print("textContainers.count : \(self.textContainers.count)")
         print("numberOfGlyphs : \(self.numberOfGlyphs)")
-        print("firstUnlaidCharacterIndex : \(self.firstUnlaidCharacterIndex())")
-        print("firstUnlaidGlyphIndex : \(self.firstUnlaidGlyphIndex())")
+        print("firstUnlaidCharacterIndex : \(self.firstUnlaidCharacterIndex)")
+        print("firstUnlaidGlyphIndex : \(self.firstUnlaidGlyphIndex)")
         print("extraLineFragmentRect : \(self.extraLineFragmentRect)")
         print("extraLineFragmentUsedRect : \(self.extraLineFragmentUsedRect)")
         self.textContainers.forEach() {
-            print("usedRectForTextContainer : \(self.usedRectForTextContainer($0))")
-            print("glyphRangeForTextContainer : \(self.glyphRangeForTextContainer($0))")
+            print("usedRectForTextContainer : \(self.usedRect(for: $0))")
+            print("glyphRangeForTextContainer : \(self.glyphRange(for: $0))")
         }
         print("---------------------------------------------------------------------")
     }

@@ -12,74 +12,74 @@ import Foundation
 
 extension AOR {
     
-    public func usedSize(size: CGSize) -> CGSize {
+    public func usedSize(_ size: CGSize) -> CGSize {
         if self.store.string.isEmpty { return CGSize.zero }
         
         var s: CGSize = CGSize.zero
         self.calculateLayout(size) { layoutManager, textContainer in
-            s = layoutManager.usedRectForTextContainer(textContainer).size
+            s = layoutManager.usedRect(for: textContainer).size
         }
         
         return s
     }
     
-    public func maxLineCount(width: CGFloat) -> Int {
+    public func maxLineCount(_ width: CGFloat) -> Int {
         return self.lineCount(CGSize(width: width, height: CGFloat(FLT_MAX)))
     }
     
-    public func lineCount(size: CGSize) -> Int {
+    public func lineCount(_ size: CGSize) -> Int {
         if self.store.string.isEmpty { return 0 }
         
         var lineCount: Int = 0
         self.calculateLayout(size) { layoutManager, textContainer in
-            let range = layoutManager.glyphRangeForTextContainer(textContainer)
-            layoutManager.enumerateLineFragmentsForGlyphRange(range) { (_, _, _, _, _) in lineCount += 1 }
+            let range = layoutManager.glyphRange(for: textContainer)
+            layoutManager.enumerateLineFragments(forGlyphRange: range) { (_, _, _, _, _) in lineCount += 1 }
         }
         
         return lineCount
     }
     
-    public func lineRects(size: CGSize) -> [CGRect] {
+    public func lineRects(_ size: CGSize) -> [CGRect] {
         if self.store.string.isEmpty { return [] }
         
         var r: [CGRect] = []
         self.calculateLayout(size) { layoutManager, textContainer in
-            let range = layoutManager.glyphRangeForTextContainer(textContainer)
-            layoutManager.enumerateLineFragmentsForGlyphRange(range) { (rect, usedRect, con, range, stop) in r.append(usedRect) }
+            let range = layoutManager.glyphRange(for: textContainer)
+            layoutManager.enumerateLineFragments(forGlyphRange: range) { (rect, usedRect, con, range, stop) in r.append(usedRect) }
         }
         
         return r
     }
     
-    public func lineRanges(size: CGSize) -> [NSRange] {
+    public func lineRanges(_ size: CGSize) -> [NSRange] {
         if self.store.string.isEmpty { return [] }
         
         var r: [NSRange] = []
         self.calculateLayout(size) { layoutManager, textContainer in
-            let range = layoutManager.glyphRangeForTextContainer(textContainer)
-            layoutManager.enumerateLineFragmentsForGlyphRange(range) { (rect, usedRect, con, range, stop) in r.append(range) }
+            let range = layoutManager.glyphRange(for: textContainer)
+            layoutManager.enumerateLineFragments(forGlyphRange: range) { (rect, usedRect, con, range, stop) in r.append(range) }
         }
         
         return r
     }
     
-    public func lineAttributedStrings(size: CGSize) -> [NSAttributedString] {
+    public func lineAttributedStrings(_ size: CGSize) -> [NSAttributedString] {
         if self.store.string.isEmpty { return [] }
         
         var r: [NSRange] = []
         self.calculateLayout(size) { layoutManager, textContainer in
-            let range = layoutManager.glyphRangeForTextContainer(textContainer)
-            layoutManager.enumerateLineFragmentsForGlyphRange(range) { (rect, usedRect, con, range, stop) in r.append(range) }
+            let range = layoutManager.glyphRange(for: textContainer)
+            layoutManager.enumerateLineFragments(forGlyphRange: range) { (rect, usedRect, con, range, stop) in r.append(range) }
         }
         
-        return r.map() { self.store.attributedSubstringFromRange($0) }
+        return r.map() { self.store.attributedSubstring(from: $0) }
     }
     
-    public func lineStrings(size: CGSize) -> [String] {
+    public func lineStrings(_ size: CGSize) -> [String] {
         return self.lineAttributedStrings(size).map() { $0.string }
     }
     
-    private func calculateLayout(size: CGSize, @noescape _ closure: ((NSLayoutManager, NSTextContainer) -> Void)) {
+    fileprivate func calculateLayout(_ size: CGSize, _ closure: ((NSLayoutManager, NSTextContainer) -> Void)) {
         let layoutManager = NSLayoutManager()
         let textContainer = NSTextContainer(size: size)
         textContainer.lineFragmentPadding = self.lineFragmentPadding

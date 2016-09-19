@@ -9,54 +9,54 @@
 import Foundation
 
 public enum LineType {
-    case Strikethrough
-    case Underline
+    case strikethrough
+    case underline
     
     var styleKey: String {
         switch self {
-        case .Strikethrough: return NSStrikethroughStyleAttributeName
-        case .Underline: return NSUnderlineStyleAttributeName
+        case .strikethrough: return NSStrikethroughStyleAttributeName
+        case .underline: return NSUnderlineStyleAttributeName
         }
     }
     
     var colorKey: String {
         switch self {
-        case .Strikethrough: return NSStrikethroughColorAttributeName
-        case .Underline: return NSUnderlineColorAttributeName
+        case .strikethrough: return NSStrikethroughColorAttributeName
+        case .underline: return NSUnderlineColorAttributeName
         }
     }
 }
 
 public enum LineStyle {
-    case None
-    case Single
-    case Thick
-    case Double
+    case none
+    case single
+    case thick
+    case double
     
     var rawValue: Int {
         switch self {
-        case .None: return NSUnderlineStyle.StyleNone.rawValue
-        case .Single: return NSUnderlineStyle.StyleSingle.rawValue
-        case .Thick: return NSUnderlineStyle.StyleThick.rawValue
-        case .Double: return NSUnderlineStyle.StyleDouble.rawValue
+        case .none: return NSUnderlineStyle.styleNone.rawValue
+        case .single: return NSUnderlineStyle.styleSingle.rawValue
+        case .thick: return NSUnderlineStyle.styleThick.rawValue
+        case .double: return NSUnderlineStyle.styleDouble.rawValue
         }
     }
 }
 
 public enum LinePattern {
-    case Solid
-    case Dot
-    case Dash
-    case DashDot
-    case DashDotDot
+    case solid
+    case dot
+    case dash
+    case dashDot
+    case dashDotDot
     
     var rawValue: Int {
         switch self {
-        case .Solid: return NSUnderlineStyle.PatternSolid.rawValue
-        case .Dot: return NSUnderlineStyle.PatternDot.rawValue
-        case .Dash: return NSUnderlineStyle.PatternDash.rawValue
-        case .DashDot: return NSUnderlineStyle.PatternDashDot.rawValue
-        case .DashDotDot: return NSUnderlineStyle.PatternDashDotDot.rawValue
+        case .solid: return NSUnderlineStyle.styleNone.rawValue
+        case .dot: return NSUnderlineStyle.patternDot.rawValue
+        case .dash: return NSUnderlineStyle.patternDash.rawValue
+        case .dashDot: return NSUnderlineStyle.patternDashDot.rawValue
+        case .dashDotDot: return NSUnderlineStyle.patternDashDotDot.rawValue
         }
     }
 }
@@ -81,7 +81,7 @@ public struct LineInfo {
         var a: TextAttrubute = [:]
         
         if self.isLineByWord {
-            a[type.styleKey] = self.style.rawValue | self.pattern.rawValue | NSUnderlineStyle.ByWord.rawValue
+            a[type.styleKey] = self.style.rawValue | self.pattern.rawValue | NSUnderlineStyle.byWord.rawValue
         } else {
             a[type.styleKey] = self.style.rawValue | self.pattern.rawValue
         }

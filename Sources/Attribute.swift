@@ -8,88 +8,88 @@
 
 import Foundation
 
-public typealias TextAttrubute = [String : AnyObject]
+public typealias TextAttrubute = [String : Any]
 
 public enum Attribute {
-    case Font(UIFont)
-    case ParagraphStyle(ParagraphInfo)
-    case ForegroundColor(UIColor)
-    case BackgroundColor(UIColor)
-    case Ligature(Int)
-    case Kern(Float)
-    case Line(LineInfo)
-    case Outline(OutlineInfo)
-    case Shadow(ShadowInfo)
-    case TextEffect(TextEffectType)
-    case Attachment(NSTextAttachment)
-    case Link(String)
-    case BaselineOffset(Float)
-    case Obliqueness(Float)
-    case Expansion(Float)
-    case WritingDirection([UnicodeWritingDirection])
-    case VerticalGlyphForm
-    case Custom(String, AnyObject)
+    case font(UIFont)
+    case paragraphStyle(ParagraphInfo)
+    case foregroundColor(UIColor)
+    case backgroundColor(UIColor)
+    case ligature(Int)
+    case kern(Float)
+    case line(LineInfo)
+    case outline(OutlineInfo)
+    case shadow(ShadowInfo)
+    case textEffect(TextEffectType)
+    case attachment(NSTextAttachment)
+    case link(String)
+    case baselineOffset(Float)
+    case obliqueness(Float)
+    case expansion(Float)
+    case writingDirection([UnicodeWritingDirection])
+    case verticalGlyphForm
+    case custom(String, AnyObject)
     
     public var key: String {
         switch self {
-        case .Font: return NSFontAttributeName
-        case .ParagraphStyle: return "" // no uses
-        case .ForegroundColor: return NSForegroundColorAttributeName
-        case .BackgroundColor: return NSBackgroundColorAttributeName
-        case .Ligature: return NSLigatureAttributeName
-        case .Kern: return NSKernAttributeName
-        case .Line: return "" // no uses
-        case .Outline: return "" // no uses
-        case .Shadow: return "" // no uses
-        case .TextEffect: return NSTextEffectAttributeName
-        case .Attachment: return NSAttachmentAttributeName
-        case .Link: return NSLinkAttributeName
-        case .BaselineOffset: return NSBaselineOffsetAttributeName
-        case .Obliqueness: return NSObliquenessAttributeName
-        case .Expansion: return NSExpansionAttributeName
-        case .WritingDirection: return NSWritingDirectionAttributeName
-        case .VerticalGlyphForm: return NSVerticalGlyphFormAttributeName
-        case .Custom(let key, _): return key
+        case .font: return NSFontAttributeName
+        case .paragraphStyle: return "" // no uses
+        case .foregroundColor: return NSForegroundColorAttributeName
+        case .backgroundColor: return NSBackgroundColorAttributeName
+        case .ligature: return NSLigatureAttributeName
+        case .kern: return NSKernAttributeName
+        case .line: return "" // no uses
+        case .outline: return "" // no uses
+        case .shadow: return "" // no uses
+        case .textEffect: return NSTextEffectAttributeName
+        case .attachment: return NSAttachmentAttributeName
+        case .link: return NSLinkAttributeName
+        case .baselineOffset: return NSBaselineOffsetAttributeName
+        case .obliqueness: return NSObliquenessAttributeName
+        case .expansion: return NSExpansionAttributeName
+        case .writingDirection: return NSWritingDirectionAttributeName
+        case .verticalGlyphForm: return NSVerticalGlyphFormAttributeName
+        case .custom(let key, _): return key
         }
     }
     
     public var attribute: TextAttrubute {
         switch self {
-        case .Font(let value): return [self.key : value]
-        case .ParagraphStyle(let value): return value.textAttrubute
-        case .ForegroundColor(let value): return [self.key : value]
-        case .BackgroundColor(let value): return [self.key : value]
-        case .Ligature(let value): return [self.key : NSNumber.init(long: value)]
-        case .Kern(let value): return [self.key : NSNumber.init(float: value)]
-        case .Line(let value): return value.textAttrubute
-        case .Outline(let value): return value.textAttrubute
-        case .Shadow(let value): return value.textAttrubute
-        case .TextEffect(let value): return [self.key : value.string]
-        case .Attachment(let value): return [self.key : value]
-        case .Link(let value): return [self.key : value]
-        case .BaselineOffset(let value): return [self.key : NSNumber.init(float: value)]
-        case .Obliqueness(let value): return [self.key : NSNumber.init(float: value)]
-        case .Expansion(let value): return [self.key : NSNumber.init(float: value)]
-        case .WritingDirection(let value): return [self.key : NSArray.init(array: value.map({ NSNumber.init(long: $0.rawValue) }))]
-        case .VerticalGlyphForm: return [self.key : NSNumber.init(long: 0)]
-        case .Custom(let key, let value): return [key : value]
+        case .font(let value): return [self.key : value]
+        case .paragraphStyle(let value): return value.textAttrubute
+        case .foregroundColor(let value): return [self.key : value]
+        case .backgroundColor(let value): return [self.key : value]
+        case .ligature(let value): return [self.key : NSNumber.init(value: value as Int)]
+        case .kern(let value): return [self.key : NSNumber.init(value: value as Float)]
+        case .line(let value): return value.textAttrubute
+        case .outline(let value): return value.textAttrubute
+        case .shadow(let value): return value.textAttrubute
+        case .textEffect(let value): return [self.key : value.string as AnyObject]
+        case .attachment(let value): return [self.key : value]
+        case .link(let value): return [self.key : value as AnyObject]
+        case .baselineOffset(let value): return [self.key : NSNumber.init(value: value as Float)]
+        case .obliqueness(let value): return [self.key : NSNumber.init(value: value as Float)]
+        case .expansion(let value): return [self.key : NSNumber.init(value: value as Float)]
+        case .writingDirection(let value): return [self.key : NSArray.init(array: value.map({ NSNumber.init(value: $0.rawValue as Int) }))]
+        case .verticalGlyphForm: return [self.key : NSNumber.init(value: 0 as Int)]
+        case .custom(let key, let value): return [key : value]
         }
     }
 }
 
 public enum TextEffectType {
-    case LetterpressStyle
+    case letterpressStyle
     
     public var string: String {
         switch self {
-        case .LetterpressStyle: return NSTextEffectLetterpressStyle
+        case .letterpressStyle: return NSTextEffectLetterpressStyle
         }
     }
 }
 
 public enum UnicodeWritingDirection: Int {
-    case LRE = 0  // NSWritingDirectionLeftToRight | NSTextWritingDirectionEmbedding
-    case RLE = 1  // NSWritingDirectionRightToLeft | NSTextWritingDirectionEmbedding
-    case LRO = 2  // NSWritingDirectionLeftToRight | NSTextWritingDirectionOverride
-    case RLO = 3  // NSWritingDirectionRightToLeft | NSTextWritingDirectionOverride
+    case lre = 0  // NSWritingDirectionLeftToRight | NSTextWritingDirectionEmbedding
+    case rle = 1  // NSWritingDirectionRightToLeft | NSTextWritingDirectionEmbedding
+    case lro = 2  // NSWritingDirectionLeftToRight | NSTextWritingDirectionOverride
+    case rlo = 3  // NSWritingDirectionRightToLeft | NSTextWritingDirectionOverride
 }

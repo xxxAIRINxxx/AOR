@@ -10,7 +10,7 @@ import Foundation
 
 public struct ParagraphInfo {
     
-    private let paragraph: NSMutableParagraphStyle = NSMutableParagraphStyle()
+    fileprivate let paragraph: NSMutableParagraphStyle = NSMutableParagraphStyle()
     
     public init() {}
     
@@ -21,83 +21,83 @@ public struct ParagraphInfo {
 
 extension ParagraphInfo {
     
-    public func lineSpacing(value: CGFloat) -> ParagraphInfo {
+    public func lineSpacing(_ value: CGFloat) -> ParagraphInfo {
         self.paragraph.lineSpacing = value
         return self
     }
     
-    public func paragraphSpacing(value: CGFloat) -> ParagraphInfo {
+    public func paragraphSpacing(_ value: CGFloat) -> ParagraphInfo {
         self.paragraph.paragraphSpacing = value
         return self
     }
     
-    public func alignment(value: NSTextAlignment) -> ParagraphInfo {
+    public func alignment(_ value: NSTextAlignment) -> ParagraphInfo {
         self.paragraph.alignment = value
         return self
     }
     
-    public func firstLineHeadIndent(value: CGFloat) -> ParagraphInfo {
+    public func firstLineHeadIndent(_ value: CGFloat) -> ParagraphInfo {
         self.paragraph.firstLineHeadIndent = value
         return self
     }
     
-    public func headIndent(value: CGFloat) -> ParagraphInfo {
+    public func headIndent(_ value: CGFloat) -> ParagraphInfo {
         self.paragraph.headIndent = value
         return self
     }
     
-    public func tailIndent(value: CGFloat) -> ParagraphInfo {
+    public func tailIndent(_ value: CGFloat) -> ParagraphInfo {
         self.paragraph.tailIndent = value
         return self
     }
     
-    public func lineBreakMode(value: NSLineBreakMode) -> ParagraphInfo {
+    public func lineBreakMode(_ value: NSLineBreakMode) -> ParagraphInfo {
         self.paragraph.lineBreakMode = value
         return self
     }
     
-    public func minimumLineHeight(value: CGFloat) -> ParagraphInfo {
+    public func minimumLineHeight(_ value: CGFloat) -> ParagraphInfo {
         self.paragraph.minimumLineHeight = value
         return self
     }
     
-    public func maximumLineHeight(value: CGFloat) -> ParagraphInfo {
+    public func maximumLineHeight(_ value: CGFloat) -> ParagraphInfo {
         self.paragraph.maximumLineHeight = value
         return self
     }
     
-    public func baseWritingDirection(value: NSWritingDirection) -> ParagraphInfo {
+    public func baseWritingDirection(_ value: NSWritingDirection) -> ParagraphInfo {
         self.paragraph.baseWritingDirection = value
         return self
     }
     
-    public func lineHeightMultiple(value: CGFloat) -> ParagraphInfo {
+    public func lineHeightMultiple(_ value: CGFloat) -> ParagraphInfo {
         self.paragraph.lineHeightMultiple = value
         return self
     }
     
-    public func paragraphSpacingBefore(value: CGFloat) -> ParagraphInfo {
+    public func paragraphSpacingBefore(_ value: CGFloat) -> ParagraphInfo {
         self.paragraph.paragraphSpacingBefore = value
         return self
     }
     
-    public func hyphenationFactor(value: Float) -> ParagraphInfo {
+    public func hyphenationFactor(_ value: Float) -> ParagraphInfo {
         self.paragraph.hyphenationFactor = value
         return self
     }
     
-    public func tabStops(value: [NSTextTab]) -> ParagraphInfo {
+    public func tabStops(_ value: [NSTextTab]) -> ParagraphInfo {
         self.paragraph.tabStops = value
         return self
     }
     
-    public func defaultTabInterval(value: CGFloat) -> ParagraphInfo {
+    public func defaultTabInterval(_ value: CGFloat) -> ParagraphInfo {
         self.paragraph.defaultTabInterval = value
         return self
     }
     
     @available(iOS 9.0, *)
-    public func allowsDefaultTighteningForTruncation(value: Bool) -> ParagraphInfo {
+    public func allowsDefaultTighteningForTruncation(_ value: Bool) -> ParagraphInfo {
         self.paragraph.allowsDefaultTighteningForTruncation = value
         return self
     }

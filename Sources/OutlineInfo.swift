@@ -21,7 +21,7 @@ public struct OutlineInfo {
     public var textAttrubute: TextAttrubute {
         return [
             NSStrokeColorAttributeName : self.color,
-            NSStrokeWidthAttributeName : self.width
+            NSStrokeWidthAttributeName : self.width as AnyObject
         ]
     }
 }

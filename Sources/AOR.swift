@@ -19,22 +19,22 @@ public struct AOR {
     public init() {}
     
     public init(_ text: String, _ attribute: Attribute? = nil) {
-        self.append(text, attribute)
+        _ = self.append(text, attribute)
     }
     
     public init(_ text: String, _ attributes: [Attribute]) {
-        self.append(text, attributes)
+        _ = self.append(text, attributes)
     }
     
-    public func append(text: String, _ attribute: Attribute? = nil) -> AOR {
-        self.store.appendAttributedString(NSAttributedString(string: text, attributes: attribute?.attribute))
+    public func append(_ text: String, _ attribute: Attribute? = nil) -> AOR {
+        self.store.append(NSAttributedString(string: text, attributes: attribute?.attribute))
         return self
     }
     
-    public func append(text: String, _ attributes: [Attribute]) -> AOR {
+    public func append(_ text: String, _ attributes: [Attribute]) -> AOR {
         let m = NSMutableAttributedString(string: text)
         attributes.forEach() { m.addAttributes($0.attribute, range: NSRange(location: 0, length: m.length)) }
-        self.store.appendAttributedString(m)
+        self.store.append(m)
         return self
     }
     
@@ -45,9 +45,14 @@ public struct AOR {
 
 // MARK:- Custom Operator
 
-infix operator +| { associativity right precedence 50 }
+precedencegroup AORAddingOperator {
+    associativity: right
+    lowerThan: AdditionPrecedence
+}
+
+infix operator +| : AORAddingOperator
 
 public func +|(l: AOR, r: AOR) -> AOR {
-    l.store.appendAttributedString(r.store)
+    l.store.append(r.store)
     return l
 }
