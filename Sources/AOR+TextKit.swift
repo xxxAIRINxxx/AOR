@@ -24,7 +24,7 @@ extension AOR {
     }
     
     public func maxLineCount(_ width: CGFloat) -> Int {
-        return self.lineCount(CGSize(width: width, height: CGFloat(FLT_MAX)))
+        return self.lineCount(CGSize(width: width, height: CGFloat(Float.greatestFiniteMagnitude)))
     }
     
     public func lineCount(_ size: CGSize) -> Int {
