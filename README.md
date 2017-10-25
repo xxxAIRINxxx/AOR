@@ -1,8 +1,8 @@
 # AOR
 
-[![Swift 3.0](https://img.shields.io/badge/Swift-3.0-orange.svg?style=flat)](https://developer.apple.com/swift/)
+[![Swift 3.2](https://img.shields.io/badge/Swift-3.2-orange.svg?style=flat)](https://developer.apple.com/swift/)
 [![Platforms iOS](https://img.shields.io/badge/Platforms-iOS-lightgray.svg?style=flat)](https://developer.apple.com/swift/)
-[![Xcode 8.0](https://img.shields.io/badge/Xcode-8.0-blue.svg?style=flat)](https://developer.apple.com/swift/)
+[![Xcode 9.0](https://img.shields.io/badge/Xcode-9.0-blue.svg?style=flat)](https://developer.apple.com/swift/)
 
 ![screen_shot](Images/screen_shot.png "")
 
@@ -61,9 +61,18 @@ AOR("any....").lineAttributedStrings(self.textView.size) // -> [NSAttributedStri
 
 ## Requirements
 
-* iOS 9.0+
-* Swift 3.0
-* Xcode 8.0
+* Xcode 9.0
+
+## Requirements
+
+* Xcode 9.0+
+
+|            | OS                         | Swift         |
+|------------|------------------|--------------|
+| **v1.1.0** | iOS 9+ | 3.0      |
+| **v1.2.x** | iOS 9+ | 3.2      |
+| **v1.3.x** | iOS 9+ | 4.0      |
+
 
 ## Installation
 
