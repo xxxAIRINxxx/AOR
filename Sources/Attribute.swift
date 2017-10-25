@@ -8,7 +8,7 @@
 
 import Foundation
 
-public typealias TextAttrubute = [String : Any]
+public typealias TextAttrubute = [NSAttributedStringKey : Any]
 
 public enum Attribute {
     case font(UIFont)
@@ -28,27 +28,27 @@ public enum Attribute {
     case expansion(Float)
     case writingDirection([UnicodeWritingDirection])
     case verticalGlyphForm
-    case custom(String, AnyObject)
+    case custom(NSAttributedStringKey, Any)
     
-    public var key: String {
+    public var key: NSAttributedStringKey {
         switch self {
-        case .font: return NSFontAttributeName
-        case .paragraphStyle: return "" // no uses
-        case .foregroundColor: return NSForegroundColorAttributeName
-        case .backgroundColor: return NSBackgroundColorAttributeName
-        case .ligature: return NSLigatureAttributeName
-        case .kern: return NSKernAttributeName
-        case .line: return "" // no uses
-        case .outline: return "" // no uses
-        case .shadow: return "" // no uses
-        case .textEffect: return NSTextEffectAttributeName
-        case .attachment: return NSAttachmentAttributeName
-        case .link: return NSLinkAttributeName
-        case .baselineOffset: return NSBaselineOffsetAttributeName
-        case .obliqueness: return NSObliquenessAttributeName
-        case .expansion: return NSExpansionAttributeName
-        case .writingDirection: return NSWritingDirectionAttributeName
-        case .verticalGlyphForm: return NSVerticalGlyphFormAttributeName
+        case .font: return NSAttributedStringKey.font
+        case .paragraphStyle: return NSAttributedStringKey(rawValue: "") // no uses
+        case .foregroundColor: return NSAttributedStringKey.foregroundColor
+        case .backgroundColor: return NSAttributedStringKey.backgroundColor
+        case .ligature: return NSAttributedStringKey.ligature
+        case .kern: return NSAttributedStringKey.kern
+        case .line: return NSAttributedStringKey(rawValue: "") // no uses
+        case .outline: return NSAttributedStringKey(rawValue: "") // no uses
+        case .shadow: return NSAttributedStringKey(rawValue: "") // no uses
+        case .textEffect: return NSAttributedStringKey.textEffect
+        case .attachment: return NSAttributedStringKey.attachment
+        case .link: return NSAttributedStringKey.link
+        case .baselineOffset: return NSAttributedStringKey.baselineOffset
+        case .obliqueness: return NSAttributedStringKey.obliqueness
+        case .expansion: return NSAttributedStringKey.expansion
+        case .writingDirection: return NSAttributedStringKey.writingDirection
+        case .verticalGlyphForm: return NSAttributedStringKey.verticalGlyphForm
         case .custom(let key, _): return key
         }
     }
@@ -82,7 +82,7 @@ public enum TextEffectType {
     
     public var string: String {
         switch self {
-        case .letterpressStyle: return NSTextEffectLetterpressStyle
+        case .letterpressStyle: return NSAttributedString.TextEffectStyle.letterpressStyle.rawValue
         }
     }
 }

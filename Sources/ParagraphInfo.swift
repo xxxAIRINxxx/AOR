@@ -15,7 +15,7 @@ public struct ParagraphInfo {
     public init() {}
     
     public var textAttrubute: TextAttrubute {
-        return [NSParagraphStyleAttributeName : self.paragraph]
+        return [NSAttributedStringKey.paragraphStyle : self.paragraph]
     }
 }
 

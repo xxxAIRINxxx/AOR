@@ -12,17 +12,17 @@ public enum LineType {
     case strikethrough
     case underline
     
-    var styleKey: String {
+    var styleKey: NSAttributedStringKey {
         switch self {
-        case .strikethrough: return NSStrikethroughStyleAttributeName
-        case .underline: return NSUnderlineStyleAttributeName
+        case .strikethrough: return NSAttributedStringKey.strikethroughStyle
+        case .underline: return NSAttributedStringKey.underlineStyle
         }
     }
     
-    var colorKey: String {
+    var colorKey: NSAttributedStringKey {
         switch self {
-        case .strikethrough: return NSStrikethroughColorAttributeName
-        case .underline: return NSUnderlineColorAttributeName
+        case .strikethrough: return NSAttributedStringKey.strikethroughColor
+        case .underline: return NSAttributedStringKey.underlineColor
         }
     }
 }

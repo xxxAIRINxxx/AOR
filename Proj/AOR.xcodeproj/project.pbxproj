@@ -122,7 +122,7 @@
 					91B9EB1B1C59AB9700426490 = {
 						CreatedOnToolsVersion = 7.2;
 						DevelopmentTeam = P599PJHMNF;
-						LastSwiftMigration = 0800;
+						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -296,7 +296,8 @@
 				PRODUCT_NAME = AOR;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -316,7 +317,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = xxxAIRINxxx.AOR;
 				PRODUCT_NAME = AOR;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};

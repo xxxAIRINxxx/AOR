@@ -25,6 +25,6 @@ public struct ShadowInfo {
         s.shadowOffset = self.offset
         s.shadowColor = self.color
         s.shadowBlurRadius = self.blurRadius
-        return [NSShadowAttributeName : s]
+        return [NSAttributedStringKey.shadow : s]
     }
 }
