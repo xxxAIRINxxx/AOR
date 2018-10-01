@@ -8,7 +8,7 @@
 
 import Foundation
 
-public typealias TextAttrubute = [NSAttributedStringKey : Any]
+public typealias TextAttrubute = [NSAttributedString.Key : Any]
 
 public enum Attribute {
     case font(UIFont)
@@ -28,27 +28,27 @@ public enum Attribute {
     case expansion(Float)
     case writingDirection([UnicodeWritingDirection])
     case verticalGlyphForm
-    case custom(NSAttributedStringKey, Any)
+    case custom(NSAttributedString.Key, Any)
     
-    public var key: NSAttributedStringKey {
+    public var key: NSAttributedString.Key {
         switch self {
-        case .font: return NSAttributedStringKey.font
-        case .paragraphStyle: return NSAttributedStringKey(rawValue: "") // no uses
-        case .foregroundColor: return NSAttributedStringKey.foregroundColor
-        case .backgroundColor: return NSAttributedStringKey.backgroundColor
-        case .ligature: return NSAttributedStringKey.ligature
-        case .kern: return NSAttributedStringKey.kern
-        case .line: return NSAttributedStringKey(rawValue: "") // no uses
-        case .outline: return NSAttributedStringKey(rawValue: "") // no uses
-        case .shadow: return NSAttributedStringKey(rawValue: "") // no uses
-        case .textEffect: return NSAttributedStringKey.textEffect
-        case .attachment: return NSAttributedStringKey.attachment
-        case .link: return NSAttributedStringKey.link
-        case .baselineOffset: return NSAttributedStringKey.baselineOffset
-        case .obliqueness: return NSAttributedStringKey.obliqueness
-        case .expansion: return NSAttributedStringKey.expansion
-        case .writingDirection: return NSAttributedStringKey.writingDirection
-        case .verticalGlyphForm: return NSAttributedStringKey.verticalGlyphForm
+        case .font: return NSAttributedString.Key.font
+        case .paragraphStyle: return NSAttributedString.Key(rawValue: "") // no uses
+        case .foregroundColor: return NSAttributedString.Key.foregroundColor
+        case .backgroundColor: return NSAttributedString.Key.backgroundColor
+        case .ligature: return NSAttributedString.Key.ligature
+        case .kern: return NSAttributedString.Key.kern
+        case .line: return NSAttributedString.Key(rawValue: "") // no uses
+        case .outline: return NSAttributedString.Key(rawValue: "") // no uses
+        case .shadow: return NSAttributedString.Key(rawValue: "") // no uses
+        case .textEffect: return NSAttributedString.Key.textEffect
+        case .attachment: return NSAttributedString.Key.attachment
+        case .link: return NSAttributedString.Key.link
+        case .baselineOffset: return NSAttributedString.Key.baselineOffset
+        case .obliqueness: return NSAttributedString.Key.obliqueness
+        case .expansion: return NSAttributedString.Key.expansion
+        case .writingDirection: return NSAttributedString.Key.writingDirection
+        case .verticalGlyphForm: return NSAttributedString.Key.verticalGlyphForm
         case .custom(let key, _): return key
         }
     }

@@ -20,8 +20,8 @@ public struct OutlineInfo {
     
     public var textAttrubute: TextAttrubute {
         return [
-            NSAttributedStringKey.strokeColor : self.color,
-            NSAttributedStringKey.strokeWidth : self.width
+            NSAttributedString.Key.strokeColor : self.color,
+            NSAttributedString.Key.strokeWidth : self.width
         ]
     }
 }

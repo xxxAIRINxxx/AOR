@@ -12,51 +12,47 @@ public enum LineType {
     case strikethrough
     case underline
     
-    var styleKey: NSAttributedStringKey {
+    var styleKey: NSAttributedString.Key {
         switch self {
-        case .strikethrough: return NSAttributedStringKey.strikethroughStyle
-        case .underline: return NSAttributedStringKey.underlineStyle
+        case .strikethrough: return NSAttributedString.Key.strikethroughStyle
+        case .underline: return NSAttributedString.Key.underlineStyle
         }
     }
     
-    var colorKey: NSAttributedStringKey {
+    var colorKey: NSAttributedString.Key {
         switch self {
-        case .strikethrough: return NSAttributedStringKey.strikethroughColor
-        case .underline: return NSAttributedStringKey.underlineColor
+        case .strikethrough: return NSAttributedString.Key.strikethroughColor
+        case .underline: return NSAttributedString.Key.underlineColor
         }
     }
 }
 
 public enum LineStyle {
-    case none
     case single
     case thick
     case double
     
-    var rawValue: Int {
+    var rawValue: NSUnderlineStyle {
         switch self {
-        case .none: return NSUnderlineStyle.styleNone.rawValue
-        case .single: return NSUnderlineStyle.styleSingle.rawValue
-        case .thick: return NSUnderlineStyle.styleThick.rawValue
-        case .double: return NSUnderlineStyle.styleDouble.rawValue
+        case .single: return NSUnderlineStyle.single
+        case .thick: return NSUnderlineStyle.thick
+        case .double: return NSUnderlineStyle.double
         }
     }
 }
 
 public enum LinePattern {
-    case solid
     case dot
     case dash
     case dashDot
     case dashDotDot
     
-    var rawValue: Int {
+    var rawValue: NSUnderlineStyle {
         switch self {
-        case .solid: return NSUnderlineStyle.styleNone.rawValue
-        case .dot: return NSUnderlineStyle.patternDot.rawValue
-        case .dash: return NSUnderlineStyle.patternDash.rawValue
-        case .dashDot: return NSUnderlineStyle.patternDashDot.rawValue
-        case .dashDotDot: return NSUnderlineStyle.patternDashDotDot.rawValue
+        case .dot: return NSUnderlineStyle.patternDot
+        case .dash: return NSUnderlineStyle.patternDash
+        case .dashDot: return NSUnderlineStyle.patternDashDot
+        case .dashDotDot: return NSUnderlineStyle.patternDashDotDot
         }
     }
 }
@@ -66,10 +62,10 @@ public struct LineInfo {
     public let type : LineType
     public let color: UIColor?
     public let style: LineStyle
-    public let pattern: LinePattern
+    public let pattern: LinePattern?
     public let isLineByWord: Bool
     
-    public init(_ type: LineType, _ color: UIColor?, _ style: LineStyle, _ pattern: LinePattern, _ isLineByWord: Bool = true) {
+    public init(_ type: LineType, _ color: UIColor?, _ style: LineStyle, _ pattern: LinePattern?, _ isLineByWord: Bool = true) {
         self.type = type
         self.color = color
         self.style = style
@@ -80,11 +76,14 @@ public struct LineInfo {
     public var textAttrubute: TextAttrubute {
         var a: TextAttrubute = [:]
         
-        if self.isLineByWord {
-            a[type.styleKey] = self.style.rawValue | self.pattern.rawValue | NSUnderlineStyle.byWord.rawValue
-        } else {
-            a[type.styleKey] = self.style.rawValue | self.pattern.rawValue
+        var s = self.style.rawValue
+        if let p = self.pattern?.rawValue {
+            s.insert(p)
         }
+        if self.isLineByWord {
+            s.insert(NSUnderlineStyle.byWord)
+        }
+        a[type.styleKey] = s.rawValue
         
         if let c = self.color {
             a[type.colorKey] = c
