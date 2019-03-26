@@ -29,8 +29,8 @@ extension NSLayoutManager {
         print("AOR NSLayoutManager Debug Print -------------------------------------")
         print("textContainers.count : \(self.textContainers.count)")
         print("numberOfGlyphs : \(self.numberOfGlyphs)")
-        print("firstUnlaidCharacterIndex : \(self.firstUnlaidCharacterIndex)")
-        print("firstUnlaidGlyphIndex : \(self.firstUnlaidGlyphIndex)")
+        print("firstUnlaidCharacterIndex : \(String(describing: self.firstUnlaidCharacterIndex))")
+        print("firstUnlaidGlyphIndex : \(String(describing: self.firstUnlaidGlyphIndex))")
         print("extraLineFragmentRect : \(self.extraLineFragmentRect)")
         print("extraLineFragmentUsedRect : \(self.extraLineFragmentUsedRect)")
         self.textContainers.forEach() {
